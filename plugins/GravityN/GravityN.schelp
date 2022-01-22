@@ -1,0 +1,26 @@
+class:: GravityN
+summary:: Multichannel n body system, audio inputs are the masses of the objects.
+related:: TODO
+categories:: UGens>TODO
+
+description::
+
+Multichannel n body system, audio inputs are the masses of the objects.
+
+
+classmethods::
+
+method::ar, kr
+
+argument::TODO
+
+argument::TODO
+
+
+examples::
+
+code::
+
+{ GravityN.ar(/* TODO */) }.play
+
+::
