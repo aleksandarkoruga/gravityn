@@ -3,17 +3,23 @@
 Author: Aleksandar Koruga
 
 Multichannel n body system, audio inputs are the masses of the objects.
+Check .schelp for usage
 
 ### Requirements
 
 - CMake >= 3.5
 - SuperCollider source code
+- GLM https://sourceforge.net/projects/glm.mirror/
 
 ### Building
 
 Clone the project:
 
     git clone https://github.com/aleksandarkoruga/gravityn
+    
+    download and extract GLM X.X.X.X to gravityn\plugins\GravityN or preferred include method in visual studio,
+    (glm is header only)
+    
     cd gravityn
     mkdir build
     cd build
