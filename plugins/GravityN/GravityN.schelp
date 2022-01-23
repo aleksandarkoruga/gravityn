@@ -1,26 +1,49 @@
 class:: GravityN
 summary:: Multichannel n body system, audio inputs are the masses of the objects.
-related:: TODO
-categories:: UGens>TODO
+related:: GravityGrid, GravityGrid2
+categories:: UGens>Generators>Chaotic
 
 description::
 
-Multichannel n body system, audio inputs are the masses of the objects.
-
+- Multichannel n body system, audio inputs are the masses of the objects.
+- Collisions are hardcoded at distance < 1, so choose maxDistance >1.
+- Positions reset randomly when:
+  1. event of collision
+  2. object goes out of bounds
+- Outputs are x and y positions for each object
+- the number of outputs is 2 times the number of audio inputs/array ref size (see code comment)
 
 classmethods::
 
 method::ar, kr
 
-argument::TODO
+argument::audio inputs/ array ref of audio inputs
+masses of the objects (number of objects = number of audio inputs)
 
-argument::TODO
+argument::gravity
+gravitational constant
 
+argument::dT
+time delta to use for integration, internally multiplied by sampledur (/Fs).
 
-examples::
+argument::attenuation
+the direction of the attenuation force is opposite to the velocity vector
+
+examples::maxDist
+maximum distance above which the position is randomly reset
 
 code::
 
-{ GravityN.ar(/* TODO */) }.play
+//{ GravityN.ar(/*N audio inputs provided separated by comma or as an Array ref*/,/*4 args separated by comma for gravity, dT, damping, maxDistance */) }.play
+(
+//Will have 6 outputs
+{ GravityN.ar(SinOsc.ar,SinOsc.ar,SinOsc.ar, dT, damping, maxDistance */) }.play
+)
+
+(
+//Will have 8 outputs
+{ GravityN.ar( `[SinOsc.ar,SinOsc.ar,SinOsc.ar, SinOsc.ar], dT, damping, maxDistance */) }.play
+
+)
 
 ::
