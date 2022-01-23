@@ -37,12 +37,21 @@ code::
 //{ GravityN.ar(/*N audio inputs provided separated by comma or as an Array ref*/,/*4 args separated by comma for gravity, dT, damping, maxDistance */) }.play
 (
 //Will have 6 outputs
-{ GravityN.ar(SinOsc.ar,SinOsc.ar,SinOsc.ar, dT, damping, maxDistance */) }.play
+{
+    var dT=1;
+	var damping=0;
+	var maxDistance=1000;
+	GravityN.ar( SinOsc.ar,SinOsc.ar,SinOsc.ar, K2A.ar(dT), K2A.ar(damping), K2A.ar(maxDistance) ) /maxDistance}.play
+
 )
 
 (
 //Will have 8 outputs
-{ GravityN.ar( `[SinOsc.ar,SinOsc.ar,SinOsc.ar, SinOsc.ar], dT, damping, maxDistance */) }.play
+{
+	var dT=1;
+	var damping=0;
+	var maxDistance=1000;
+	GravityN.ar( `[SinOsc.ar,SinOsc.ar,SinOsc.ar, SinOsc.ar], K2A.ar(dT), K2A.ar(damping), K2A.ar(maxDistance) ) /maxDistance}.play
 
 )
 
