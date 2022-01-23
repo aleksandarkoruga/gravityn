@@ -55,4 +55,11 @@ code::
 
 )
 
+//Some FM
+(
+{Mix.ar(SinOsc.ar((GravityN.ar([10000.0*SinOsc.ar(1000.9),80.0*SinOsc.ar(110),10000.0*SinOsc.ar(60),4000*SinOsc.ar(110)],DC.ar(10),DC.ar(100),DC.ar(1),DC.ar(10000.0))/10000.0)*300+500)).poll}.play
+)
+
+
+
 ::
