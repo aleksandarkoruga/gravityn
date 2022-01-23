@@ -17,7 +17,7 @@ Clone the project:
 
     git clone https://github.com/aleksandarkoruga/gravityn
     
-    download and extract GLM X.X.X.X to gravityn\plugins\GravityN or preferred include method in visual studio,
+    download and extract GLM X.X.X.X to gravityn\plugins\GravityN or preferred include method in your IDE,
     (glm is header only)
     
     cd gravityn
