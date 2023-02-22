@@ -13,7 +13,7 @@
 
 namespace GravityN {
     
-#define MAX_PROXIMITY 1.0f
+#define MAX_PROXIMITY 1.0
 #define DEFAULT_TIMESTEP 0.0000226757369615f
 
     struct MassComponent 
@@ -51,17 +51,14 @@ namespace GravityN {
         return unit->mParent->mRGen->frand2();
     }
 
-    void InitializeComponents(GSysPAir* _system, SCUnit* unit)
+    inline void InitializeComponents(GSysPAir* _system, SCUnit* unit, float maxDist)
     {
         for (auto component : *_system) 
         {
-            auto x = GetRandom(unit)*100.0f;
-            auto y = GetRandom(unit)*100.0f;
-            component.first->p.x = x;
-            component.second->p.x = x;
-            
-            component.first->p.y = y;
-            component.second->p.y = y;
+            component.first->p = glm::vec2(((std::rand() / (float)RAND_MAX) - 0.5) * maxDist, ((std::rand() / (float)RAND_MAX) - 0.5) * maxDist);
+            component.first->v = glm::vec2(0, 0);
+            component.second->p = glm::vec2(((std::rand() / (float)RAND_MAX) - 0.5) * maxDist, ((std::rand() / (float)RAND_MAX) - 0.5) * maxDist);
+            component.second->v = glm::vec2(0, 0);
         }
     };  
     void UpdateSystem(GSysPAir* systems,GParams* params);
@@ -83,11 +80,12 @@ private:
 protected:
     GSystem system1;
     GSystem system2;
-    GSysPAir system;
+    GSysPAir mg_system;
     int mnMasses;
     // gravity dt distance
     GParams parameters;
-    inline void SetTimestep(float dT) { parameters.SetDt( (float)mRate->mSampleDur* dT ); }
+    inline void SetTimestep(const float& dT) { parameters.SetDt( (float)mRate->mSampleDur* dT ); }
+    inline float ModDist(const glm::vec2& l, const glm::vec2& r, const float& range) { auto dist = glm::distance(l, r); return sc_min(dist, range - dist); }
 };
 
 } // namespace GravityN
